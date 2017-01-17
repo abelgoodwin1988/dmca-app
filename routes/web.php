@@ -15,9 +15,19 @@
  */
 Route::get('/', 'PagesController@Home');
 
+/**
+ * Authentication
+ */
 Auth::routes();
+
+/**
+ * Notices
+ */
+
+Route::resource('notices','NoticesController');
 
 /**
  * Login Home
  */
 Route::get('/home', 'HomeController@index');
+
