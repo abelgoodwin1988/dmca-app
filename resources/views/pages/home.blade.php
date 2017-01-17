@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    Body
+    Home Page
 @stop
