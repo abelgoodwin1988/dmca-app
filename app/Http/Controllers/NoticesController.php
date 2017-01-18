@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PrepareNoticeRequest;
+use App\Notice;
 use App\Provider;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -51,19 +52,23 @@ class NoticesController extends Controller
         return view('notices.confirm', compact('template'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //$data = session()->get('dmca');
-        //return $data;
+        $data = session()->get('dmca');
+        //return $data
 
-        /**
-         * Pseudocode:
-         * Form data is flashed. Get with session()->get('dmca')
-         * Template i in request. Request::input('template')
-         * So build up a notice object (create table too)
-         * persist it wit this data.
-         * and then fire off the email.
-         */
+         // Pseudocode:
+         // Form data is flashed. Get with session()->get('dmca')
+         // Template is in request. Request::input('template')
+         // So build up a notice object (create table too)
+        Notice::open($data)
+                ->useTemplate($request->input('template'))
+                ->save();
+         // persist it with this data.
+         //and then fire off the email.
+
+        return Notice::first();
+
     }
 
     /**
