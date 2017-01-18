@@ -31,8 +31,13 @@ class NoticesController extends Controller
     {
         // get list of providers
         // load a view to create a new notice
-
+        // return 'hello';
         return view('notices.create');
+    }
+
+    public function confirm(PrepareNoticeRequest $request)
+    {
+
     }
 
 }
