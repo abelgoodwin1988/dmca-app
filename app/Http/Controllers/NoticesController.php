@@ -36,7 +36,7 @@ class NoticesController extends Controller
 
     public function confirm(PrepareNoticeRequest $request)
     {
-        //
+        return view('notices.confirm');
     }
 
 }

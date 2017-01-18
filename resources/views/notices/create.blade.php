@@ -32,7 +32,9 @@
         <div class="form-group">
             {!! Form::submit('Preview Notice',['class'=>'btn btn-primary form-control']) !!}
         </div>
+
     {!! form::close() !!}
 
-    @include ('errors.list')
+    @include('errors.list')
+
 @endsection
