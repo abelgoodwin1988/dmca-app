@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PrepareNoticeRequest;
 use App\Provider;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 class NoticesController extends Controller
@@ -37,9 +38,30 @@ class NoticesController extends Controller
         return view('notices.create', compact('providers'));
     }
 
-    public function confirm(PrepareNoticeRequest $request)
+    /*
+     * Ask the user to confirm the DmCA that will be delivered.
+     */
+    public function confirm(PrepareNoticeRequest $request, Guard $auth)
     {
-        return $request->all();
+        // return $request->all();
+        $template = $this->compileDmcaTemplate($data = $request->all(), $auth);
+        // return $template;
+        return view('notices.confirm', compact('template'));
     }
 
+    /**
+     * Compile the DMCA view from the form data
+     * @param $data
+     * @param Guard $auth
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function compileDmcaTemplate($data, Guard $auth)
+    {
+        $data = $data + [
+                'name' => $auth->user()->name,
+                'email' => $auth->user()->email,
+            ];
+
+        return view()->file(app_path('Http/Templates/dmca.blade.php'), $data);
+    }
 }
