@@ -23,7 +23,7 @@ Auth::routes();
 /**
  * Notices
  */
-
+Route::get('notices/create/confirm', 'NoticesController@confirm');
 Route::resource('notices','NoticesController');
 
 /**

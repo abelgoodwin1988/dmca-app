@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PrepareNoticeRequest;
+use App\Provider;
 
 class NoticesController extends Controller
 {
@@ -31,5 +33,10 @@ class NoticesController extends Controller
         // load a view to create a new notice
 
         return view('notices.create');
+    }
+
+    public function confirm(PrepareNoticeRequest $request)
+    {
+
     }
 }
