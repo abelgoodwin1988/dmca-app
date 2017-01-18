@@ -18,7 +18,6 @@
             {!! Form::Label('infringing_link', 'What is the link to where this content is located?') !!}
             {!! Form::text('infringing_link', null,['class'=>'form-control']) !!}
         </div>
-
         <div class="form-group">
             {!! Form::Label('original_title', 'To verify that you own the content, we now need the link to the original content on your page.') !!}
             {!! Form::text('original_title', null,['class'=>'form-control']) !!}
