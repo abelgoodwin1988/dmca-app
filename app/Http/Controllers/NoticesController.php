@@ -45,8 +45,25 @@ class NoticesController extends Controller
     {
         // return $request->all();
         $template = $this->compileDmcaTemplate($data = $request->all(), $auth);
+        // flash the data to the page request so it's available to be stored.
+        session()->flash('dmca',$data);
         // return $template;
         return view('notices.confirm', compact('template'));
+    }
+
+    public function store()
+    {
+        //$data = session()->get('dmca');
+        //return $data;
+
+        /**
+         * Pseudocode:
+         * Form data is flashed. Get with session()->get('dmca')
+         * Template i in request. Request::input('template')
+         * So build up a notice object (create table too)
+         * persist it wit this data.
+         * and then fire off the email.
+         */
     }
 
     /**
