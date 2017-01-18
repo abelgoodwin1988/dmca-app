@@ -13,7 +13,7 @@ class PrepareNoticeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class PrepareNoticeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'infringing_title' => 'required',
+            'infringing_link' => 'required|url',
+            'original_link' => 'required|url',
+            'provider_id' => 'required',
         ];
     }
 }

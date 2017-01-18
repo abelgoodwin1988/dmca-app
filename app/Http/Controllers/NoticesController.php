@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\PrepareNoticeRequest;
-use App\Provider;
+use Illuminate\Http\Request;
 
 class NoticesController extends Controller
 {
@@ -37,7 +36,7 @@ class NoticesController extends Controller
 
     public function confirm(PrepareNoticeRequest $request)
     {
-
+        //
     }
 
 }
