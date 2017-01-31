@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * A User may create many notices.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notices()
+    {
+        return $this->hasMany('App\Notice');
+    }
 }
